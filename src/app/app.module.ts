@@ -14,8 +14,8 @@ import { SongComponent } from './song/song.component';
       AlbumComponent,
       ArtistComponent,
       ShowComponent,
-      SongComponent,
       SongComponent
+      
    ],
   imports: [
     BrowserModule,

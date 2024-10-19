@@ -1,1 +1,32 @@
-ff
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <title>TP2</title>
+</head>
+<body>
+    <header>
+        <div class="row">
+            <div><a href="artist.html">Template</a></div>
+            <div class="spacer"></div>
+            <div>
+                <select name="language" id="language">
+                    <option value="fr">Français</option>
+                    <option value="en">English</option>
+                </select>
+            </div>
+        </div>
+    </header>
+    <main>
+        <router-outlet></router-outlet>
+    </main>
+    <footer>
+        <div>
+            &copy; 2024
+        </div>
+    </footer>
+</body>
+</html>

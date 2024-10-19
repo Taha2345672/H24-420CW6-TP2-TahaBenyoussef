@@ -7,6 +7,8 @@ import { AlbumComponent } from './album/album.component';
 import { ArtistComponent } from './artist/artist.component';
 import { ShowComponent } from './show/show.component';
 import { SongComponent } from './song/song.component';
+import { YouTubePlayerModule } from '@angular/youtube-player';
+import { HttpClient, provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [					
@@ -15,13 +17,15 @@ import { SongComponent } from './song/song.component';
       ArtistComponent,
       ShowComponent,
       SongComponent
+
       
    ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    YouTubePlayerModule
   ],
-  providers: [],
+  providers: [provideHttpClient()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

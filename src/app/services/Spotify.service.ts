@@ -20,7 +20,7 @@ constructor(public http:HttpClient) {
  }
 async conect(): Promise<void>{
   let body=new HttpParams()
-.set('grany_type','client_crendentials');
+.set('grant_type','client_crendentials');
 
   let httpOptions = {
     headers: new HttpHeaders({

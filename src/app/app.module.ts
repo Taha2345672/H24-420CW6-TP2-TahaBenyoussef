@@ -10,6 +10,7 @@ import { SongComponent } from './component/song/song.component';
 import { YouTubePlayerModule } from '@angular/youtube-player';
 import { HttpClient, provideHttpClient } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [					
@@ -24,7 +25,8 @@ import { BrowserModule } from '@angular/platform-browser';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    YouTubePlayerModule
+    YouTubePlayerModule,
+    FormsModule
   ],
   providers: [provideHttpClient()],
   bootstrap: [AppComponent]

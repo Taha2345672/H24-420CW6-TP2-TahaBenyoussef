@@ -11,6 +11,7 @@ import { YouTubePlayerModule } from '@angular/youtube-player';
 import { HttpClient, provideHttpClient } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 @NgModule({
   declarations: [					
@@ -26,7 +27,9 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     YouTubePlayerModule,
-    FormsModule
+    FormsModule,
+    GoogleMapsModule
+    
   ],
   providers: [provideHttpClient()],
   bootstrap: [AppComponent]

@@ -48,7 +48,7 @@ export class AlbumComponent implements OnInit {
       }
     }
 
-    goToSongs(albumId: string) {
+    ToSongs(albumId: string) {
       this.router.navigate(['/album', albumId, 'chansons']);
     }
 

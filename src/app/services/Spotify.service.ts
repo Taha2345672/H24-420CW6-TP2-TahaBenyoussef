@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { Artist } from '../models/artist';
 
-const CLIENT_ID="6196adb8b2e1453eaf67f3730e9dd10a";
-const CLIENT_SECRET="6196adb8b2e1453eaf67f3730e9dd10a";
+const CLIENT_ID="d5b0eafe720f49f1b7d026fafc1f9c5e";
+const CLIENT_SECRET="61fa174064ff4e439c9fbc6759a3f105";
 @Injectable({
   providedIn: 'root'
 })

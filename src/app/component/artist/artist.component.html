@@ -2,14 +2,9 @@
     <div class="search">
       <h3>Ajouter un artiste</h3>
       <form (ngSubmit)="searchAndAddArtistByName()">
-        <input
-          type="text"
-          name="artistName"
-          placeholder="Entrez le nom de l'artiste"
-          [(ngModel)]="artistName"
-          required
-        />
-        <button type="submit">Rechercher</button>
+        <input type="text" name="artistName"placeholder="Entrez le nom de l'artiste"
+          [(ngModel)]="artistName"required/>
+        <button type="submit" >Rechercher</button>
       </form>
     </div>
   

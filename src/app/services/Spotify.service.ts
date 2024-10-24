@@ -102,10 +102,90 @@ async conect(): Promise<void>{
       this.favoriteArtists = [];
       localStorage.removeItem("artists");
     }
+
+    async getAlbums(artistId: string): Promise<any> {
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type':  'application/json',
+          'Authorization': 'Bearer ' + this.spotifyToken
+        })
+      };
+    
+      let response = await lastValueFrom(this.http.get<any>(`https://api.spotify.com/v1/artists/${artistId}/albums`, httpOptions));
+      console.log(response);
+      localStorage.setItem(`albums-${artistId}`, JSON.stringify(response.items));
+      return response.items;
+    }
+    
+    getAlbumsFromLocalStorage(artistId: string): any[] {
+      let jsonData = localStorage.getItem('albums-${artistId}');
+      if (jsonData != null){
+        return JSON.parse(jsonData);
+      } else {
+        return [];
+      }
+    }
+    
+    
+    async getArtist(artistId: string): Promise<Artist | null> {
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type':  'application/json',
+          'Authorization': 'Bearer ' + this.spotifyToken
+        })
+      };
+    
+      let response = await lastValueFrom(this.http.get<any>(`https://api.spotify.com/v1/artists/${artistId}`, httpOptions));
+      console.log(response);
+      return new Artist(response.id, response.name, response.images[0].url);
+    }
+    
+    
+    async getSongs(albumId: string): Promise<any> {
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type':  'application/json',
+          'Authorization': 'Bearer ' + this.spotifyToken
+        })
+      };
+    
+      let response = await lastValueFrom(this.http.get<any>(`https://api.spotify.com/v1/albums/${albumId}/tracks`, httpOptions));
+      console.log(response);
+      localStorage.setItem(`songs-${albumId}`, JSON.stringify(response.items));
+      return response.items;
+    }
+    
+    getSongsFromLocalStorage(albumId: string): any[] {
+      let jsonData = localStorage.getItem(`songs-${albumId}`);
+      if (jsonData != null){
+        return JSON.parse(jsonData);
+      } else {
+        return [];
+      }
+    }
+    
+    async getAlbum(albumId: string): Promise<any> {
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type':  'application/json',
+          'Authorization': 'Bearer ' + this.spotifyToken
+        })
+      };
+    
+      let response = await lastValueFrom(this.http.get<any>(`https://api.spotify.com/v1/albums/${albumId}`, httpOptions));
+      console.log(response);
+      return response;
+    }
+    
+    }
     
     
     
-}
+    
+    
+    
+    
+
 
 
  

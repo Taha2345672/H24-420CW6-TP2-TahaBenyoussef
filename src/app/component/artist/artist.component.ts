@@ -1,8 +1,8 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { lastValueFrom } from 'rxjs';
 import { SpotifyService } from '../../services/Spotify.service';
 import { Artist } from '../../models/artist';
+import { TranslateService } from '@ngx-translate/core'; // Importation du service de traduction
 
 @Component({
   selector: 'app-artist',
@@ -12,28 +12,25 @@ import { Artist } from '../../models/artist';
 export class ArtistComponent implements OnInit {
 
   spotifyToken?: string;
-  artistName: string= "";
-  artist ?:Artist;
+  artistName: string = "";
+  artist?: Artist;
   imageUrl: string = ""; 
-  
 
-  constructor(public http: HttpClient, public spotify: SpotifyService ) { }    
+  constructor(public http: HttpClient, public spotify: SpotifyService, private translate: TranslateService) { 
+    this.translate.setDefaultLang('fr'); 
+  }    
 
-    ngOnInit() {
-
-      this.spotify.connect(); 
-
+  ngOnInit() {
+    this.spotify.connect(); 
   }
 
-  async addArtist(){
-  this.spotify.listArtiste = await this.spotify.searchArtist(this.artistName)
-  console.log(this.spotify.listArtiste)
+  async addArtist() {
+    this.spotify.listArtiste = await this.spotify.searchArtist(this.artistName);
+    console.log(this.spotify.listArtiste);
   }
 
-  clearFavoris(){
+  clearFavoris() {
     this.spotify.listArtiste = [];
     localStorage.setItem("Artist", JSON.stringify(this.spotify.listArtiste));
   } 
-
 }
-

@@ -1,58 +1,56 @@
-/*
-█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
-█    Toutes les pages    █
-█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
-*/
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
 
-header a{
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.spacer {
+    flex-grow: 1;
+}
+
+a {
+    color: white;
     text-decoration: none;
-    color:inherit;
+    font-weight: bold;
 }
 
-.row{
-    display:flex;
-    flex-wrap:wrap;
+select {
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0056b3;
+    color: white;
+    cursor: pointer;
 }
 
-header .row{
-    gap:10px;
+select:focus {
+    outline: none;
+    background-color: #003d7a;
 }
 
-header .row div{
-    padding:10px;
-    cursor:pointer;
+main {
+    padding: 20px;
 }
 
-.spacer{
-    flex:1;
-}
-
-body{
-    background-color:#f5fafa;
-    background-image: linear-gradient(#f5fafa, #f9f5fa) fixed;
-    font-family:Verdana;
-}
-
-header,main,footer{
-    background-color:white;
-    border:lightgray solid 1px;
-    width:1000px;
-    margin:auto;
-    margin-bottom:5px;
-}
-
-footer div{
-    
-    text-align:center;
-    padding:10px;
-    font-size:0.8em;
-}
-
-main .row>div{
-    padding:10px;
-}
-
-main h3{
-    margin: 0px 0px 5px 0px;
-    text-align:center;
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }

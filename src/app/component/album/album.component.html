@@ -1,13 +1,12 @@
 <div class="row">
     <div class="albums" [(ngModel)]="spotify.artistName">
-        <h3>{{ translationService.translate('ALBUMS_TITLE') }} {{ spotify.artistName }}</h3>
+        <h3>{{ 'ALBUMS_TITLE' | translate }} {{ spotify.artistName }}</h3>
         <div class="row">
-
             <!-- Liste d'albums d'un artiste choisi -->
             <div *ngFor="let album of spotify.listAlbum">
                 <h4>{{ album.name }}</h4>
                 <img src="{{ album.image }}" alt="{{ album?.name }}">
-                <button [routerLink]="['/song', album.id]">{{ translationService.translate('SONGS_BUTTON') }}</button>
+                <button [routerLink]="['/song', album.id]">{{ 'SONGS_BUTTON' | translate }}</button>
             </div>                  
         </div>
     </div>

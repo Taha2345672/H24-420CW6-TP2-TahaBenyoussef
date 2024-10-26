@@ -5,6 +5,7 @@ import { Artist } from '../../models/artist';
 import { ActivatedRoute } from '@angular/router';
 import { Song } from '../../models/song';
 import { SpotifyService } from '../../services/Spotify.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-album',
@@ -15,7 +16,7 @@ export class AlbumComponent implements OnInit {
 
   artistName: string= "";
   
-  constructor(public http: HttpClient, public spotify: SpotifyService, public route : ActivatedRoute ) { }  
+  constructor(public http: HttpClient, public spotify: SpotifyService, public route : ActivatedRoute,public translate:TranslateService) { }  
 
   async ngOnInit() {
     

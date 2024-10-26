@@ -1,19 +1,15 @@
-
 <main>   
-    <h3>Concerts de l'artiste {{ artistName }}</h3>
-    <div class="row" >   
+    <h3>{{ 'ARTIST_CONCERTS' | translate }} {{ artistName }}</h3>
+    <div class="row">   
         <div id="map" style="height: 400px; width: 100%;"></div>
 
         <div class="shows">
-
-             <!-- Liste des concerts -->
-            <div  *ngFor="let show of spotify.concerts">
+            <!-- Liste des concerts -->
+            <div *ngFor="let show of spotify.concerts">
                 <h4>{{ show.datetime }}</h4>
-                <p>{{ show.venue.country }}</p>
-                <p>{{ show.venue.city }}</p>
+                <p>{{ 'COUNTRY' | translate }}: {{ show.venue.country }}</p>
+                <p>{{ 'CITY' | translate }}: {{ show.venue.city }}</p>
             </div>               
-
         </div>           
-
     </div>
 </main>

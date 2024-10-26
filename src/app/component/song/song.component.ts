@@ -21,14 +21,15 @@ export class SongComponent implements OnInit {
 
   ngOnInit() {
     this.albumName = this.route.snapshot.paramMap.get('albumName');
-    console.log('Album Name:', this.albumName); // Log pour débogage
+    console.log( this.albumName); 
 
     if (this.albumName) {
       this.spotify.addSong(this.albumName);
-    } else {
-      console.error('Aucun nom d\'album trouvé.'); // Log d'erreur
-    }
+
+    
   }
+
+}
 
   async searchVideo(songName: string): Promise<void> {
     console.log('Searching for video for song:', songName);
@@ -40,8 +41,10 @@ export class SongComponent implements OnInit {
   async getSafeUrl(): Promise<void> {
     if (this.videoId) {
       this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(YOUTUBE_LINK + this.videoId);
-    } else {
-      console.error('Aucun videoId trouvé.'); // Log d'erreur
-    }
+      console.log(this.videoId)
+   
   }
+
+  
+}
 }

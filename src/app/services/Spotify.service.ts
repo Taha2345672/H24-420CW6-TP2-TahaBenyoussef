@@ -144,13 +144,13 @@ async getConcert(artistName: string){
   this.listArtiste = [];
   this.concerts = [];
 
-  let Concert = await lastValueFrom(this.http.get<any>(`https://rest.bandsintown.com/artists/${artistName}/events?app_id=YOUR_APP_ID`));
+  let concert = await lastValueFrom(this.http.get<any>(`https://rest.bandsintown.com/artists/${artistName}/events?app_id=YOUR_APP_ID`))
 
-  console.log(Concert);
-  this.concerts = Concert; 
+  console.log(concert);
+  this.concerts = concert; 
   
  
-  return Concert; 
+  return concert; 
   
 }
 

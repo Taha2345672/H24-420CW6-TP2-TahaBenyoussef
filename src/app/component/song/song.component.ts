@@ -5,7 +5,7 @@ import { SpotifyService } from '../../services/Spotify.service';
 import { YouTubePlayer } from '@angular/youtube-player';
 import { YouTubeService } from '../../services/YouTube.service';
 
-
+const YOUTUBE_LINK = "https://www.youtube.com/embed/";
 @Component({
   selector: 'app-song',
   templateUrl: './song.component.html',
@@ -13,32 +13,34 @@ import { YouTubeService } from '../../services/YouTube.service';
 })
 export class SongComponent implements OnInit {
 
-  albumId: string | null;
-  albumName: string = '';
-  songs: any[] = [];
-  videoUrl: SafeResourceUrl = '';
+  albumName: string | null = null;
+  videoId : string = "";
+  videoUrl ?: SafeResourceUrl;
+  songName: string =  "";
 
   constructor(public route: ActivatedRoute, public spotify:SpotifyService, public youTube: YouTubeService, public sanitizer: DomSanitizer) {
-    this.albumId = null;
-  }
+    }
 
-  async ngOnInit() {
-    this.albumId = this.route.snapshot.paramMap.get('id');
-    if (this.albumId) {
-      let album = await this.spotify.getAlbum(this.albumId);
-      this.albumName = album.name;
-      this.songs = this.spotify.getSongsFromLocalStorage(this.albumId);
-      if (this.songs.length === 0) {
-        this.songs = await this.spotify.getSongs(this.albumId);
+    ngOnInit() {
+
+      this.albumName = this.route.snapshot.paramMap.get('albumName');
+      
+      if (this.albumName) {
+       this.spotify.addSong(this.albumName);
       }
+  
+    }
+  
+    async searchVideo(songName: string):Promise<void>{
+  
+      console.log(songName);
+      this.videoId = ""; 
+      this.videoId = await this.spotify.searchVideoId(this.songName); 
+      this.getSafeUrl();
+    }
+  
+    async getSafeUrl() : Promise<void>{      
+      
+      this.videoUrl = await this.sanitizer.bypassSecurityTrustResourceUrl(YOUTUBE_LINK + this.videoId);
     }
   }
-
-  async playSong(artistName: string, songName: string) {
-    let videoId = await this.youTube.getVideoId(`${artistName} ${songName}`);
-    if (videoId) {
-      this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(`https://www.youtube.com/embed/${videoId}`);
-    }
-  }
-
-}

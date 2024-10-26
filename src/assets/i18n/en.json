@@ -1,29 +1,31 @@
 {
-    "ARTIST": {
-        "addArtist": "Add an artist",
-        "EXAMPLE": "Example: Nana Mouskouri",
-        "SEARCH": "Search",
-        "vosArtists": "Your artists",
-        "ALBUMS": "Albums",
-        "CONCERTS": "Concerts",
-        "clearFavorites": "Clear favorites"
+    "song": {
+      "SONGS_TITLE": "Songs from the album",
+      "PLAY_BUTTON": "Play",
+      "SONG_NAME": "Song Name"
     },
-    "ALBUM": {
-        "artistAlbums": "Artist's albums",
-        "SONGS": "Songs"
+    "show": {
+      "CONCERTS_TITLE": "Concerts of artist",
+      "LOCATION": "Location",
+      "DATE": "Date",
+      "COUNTRY": "Country",
+      "CITY": "City"
     },
-    "CHANSON": {
-        "albumSongs": "Songs from the album",
-        "PLAY": "Play"
+    "artist": {
+      "ARTISTS_TITLE": "Artists",
+      "ADD_ARTIST": "Add an artist",
+      "SEARCH": "Search",
+      "CLEAR_FAVORITES": "Clear favorites",
+      "ARTIST_LIST": "Your Artists",
+      "ARTIST_SEARCH_PLACEHOLDER": "Search for an artist",
+      "EMPTY_FAVORITES": "Your favorites list is empty.",
+      "ALBUM_BUTTON": "Albums",
+      "SHOW_BUTTON": "Concerts",
+      "ARTIST_IMAGE": "Image of {{artistName}}"
     },
-    "CONCERT": {
-        "artistConcerts": "Artist's concerts",
-        "phraseConcerts": "This artist has no upcoming concerts."
-    },
-    "APP": {
-        "FRENCH": "French",
-        "ENGLISH": "English",
-        "COPYRIGHT": "All rights reserved to Spotify, BandsInTown and Google",
-        "TEMPLATE": "I yoinked the teacher's template"
+    "album": {
+      "ALBUMS_TITLE": "Albums",
+      "SONGS_TITLE": "Songs from the album"
     }
-}
+  }
+  

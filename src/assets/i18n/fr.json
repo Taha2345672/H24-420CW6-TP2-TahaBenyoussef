@@ -1,29 +1,31 @@
-{"ARTIST": {
-    "addArtist": "Ajouter un artiste",
-    "EXAMPLE": "Exemple : Nana Mouskouri",
-    "SEARCH": "Rechercher",
-    "vosArtists": "Vos artistes",
-    "ALBUMS": "Albums",
-    "CONCERTS": "Concerts",
-    "clearFavorites": "Vider les favoris"
-},
-"ALBUM": {
-    "artistAlbums": "Albums de l'artiste",
-    "SONGS": "Chansons"
-},
-"CHANSON": {
-    "albumSongs": "Chansons de l'album",
-    "PLAY": "Jouer"
-},
-"CONCERT": {
-    "artistConcerts": "Concerts de l'artiste",
-    "phraseConcerts": "Cet artiste n'a aucun concert à venir."
-},
-"APP": {
-    "FRENCH": "Français",
-    "ENGLISH": "English",
-    "COPYRIGHT": "Tous droits réservés à Spotify, BandsInTown et Google",
-    "TEMPLATE": "J'ai yoink le template de l'enseignant"
-}
-
-}
+{
+    "song": {
+      "SONGS_TITLE": "Chansons de l'album",
+      "PLAY_BUTTON": "Jouer",
+      "SONG_NAME": "Nom de la chanson"
+    },
+    "show": {
+      "CONCERTS_TITLE": "Concerts de l'artiste",
+      "LOCATION": "Emplacement",
+      "DATE": "Date",
+      "COUNTRY": "Pays",
+      "CITY": "Ville"
+    },
+    "artist": {
+      "ARTISTS_TITLE": "Artistes",
+      "ADD_ARTIST": "Ajouter un artiste",
+      "SEARCH": "Rechercher",
+      "CLEAR_FAVORITES": "Vider la liste",
+      "ARTIST_LIST": "Vos artistes",
+      "ARTIST_SEARCH_PLACEHOLDER": "Cherchez un artiste",
+      "EMPTY_FAVORITES": "Votre liste de favoris est vide.",
+      "ALBUM_BUTTON": "Albums",
+      "SHOW_BUTTON": "Concerts",
+      "ARTIST_IMAGE": "Image de {{artistName}}"
+    },
+    "album": {
+      "ALBUMS_TITLE": "Albums",
+      "SONGS_TITLE": "Chansons de l'album"
+    }
+  }
+  

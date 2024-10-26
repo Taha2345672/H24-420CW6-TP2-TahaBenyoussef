@@ -1,24 +1,60 @@
-
-
-.albums{
-    flex:3;
+.row {
+    display: flex;
+    flex-wrap: wrap; 
+    margin: 0 -15px; 
 }
 
-.albums .row{
-    gap:7px;
+.albums {
+    flex: 1; 
+    padding: 20px; 
 }
 
-.albums h4{
-    margin:0px 0px 5px 0px;
+h3 {
+    font-size: 24px; 
+    margin-bottom: 20px; 
+    color: #333; 
+    text-align: center; 
 }
 
-.albums .row>div{
-    flex-basis: 22.2%;
-    text-align:center;
-    border:lightgray 1px solid;
+.row > div {
+    flex: 1 1 30%; 
+    margin: 15px; 
+    border: 1px solid #ddd; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
+    transition: transform 0.3s; 
+    background-color: #fff; 
 }
 
-.albums .row>div>img{
-    width:100%;
+.row > div:hover {
+    transform: translateY(-5px); 
 }
 
+h4 {
+    font-size: 20px; 
+    margin: 10px 0; 
+    text-align: center; 
+}
+
+img {
+    max-width: 100%; 
+    height: auto; 
+    border-radius: 5px; 
+}
+
+button {
+    display: block; /* Transforme le bouton en bloc pour prendre toute la largeur disponible */
+    margin: 10px auto; /* Centre le bouton horizontalement */
+    padding: 10px 15px; /* Espacement interne */
+    background-color: #007bff; /* Couleur de fond du bouton */
+    color: white; /* Couleur du texte du bouton */
+    border: none; /* Supprime la bordure par défaut */
+    border-radius: 5px; /* Coins arrondis */
+    cursor: pointer; /* Change le curseur lors du survol */
+    font-size: 16px; /* Taille du texte du bouton */
+    transition: background-color 0.3s; /* Animation de la couleur de fond */
+}
+
+button:hover {
+    background-color: #0056b3; /* Couleur de fond au survol */
+}

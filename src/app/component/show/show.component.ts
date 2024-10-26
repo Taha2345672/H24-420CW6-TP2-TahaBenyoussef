@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GoogleMap } from '@angular/google-maps';
 import { SpotifyService } from '../../services/Spotify.service';
+import { TranslateService } from '@ngx-translate/core'; 
 
 declare var google: any;
 
@@ -21,7 +22,8 @@ export class ShowComponent implements OnInit {
 
   markerPositions: google.maps.LatLngLiteral[] = [{ lat: 42, lng: -4 }];
 
-  constructor(public http: HttpClient, public spotify: SpotifyService, public route: ActivatedRoute) {}
+  constructor(public http: HttpClient,public spotify: SpotifyService,public route: ActivatedRoute,public translate: TranslateService 
+  ) {}
 
   async ngOnInit() {
     this.artistName = await this.route.snapshot.paramMap.get("name");
@@ -38,19 +40,12 @@ export class ShowComponent implements OnInit {
       zoom: 5
     };
     const mapElement = document.getElementById('map');
-    
-    
+
     if (mapElement) {
-      console.log(mapOptions);
       const map = new google.maps.Map(mapElement, mapOptions);
-      
-      
+
       if (this.spotify.concerts && this.spotify.concerts.length > 0) {
-        console.log(this.spotify.concerts);
-        
-      
         for (const show of this.spotify.concerts) {
-          console.log(show);
           const marker = new google.maps.Marker({
             position: { lat: show.venue.latitude, lng: show.venue.longitude },
             map: map,
@@ -61,8 +56,3 @@ export class ShowComponent implements OnInit {
     }
   }
 }
-        
-      
-    
-  
-

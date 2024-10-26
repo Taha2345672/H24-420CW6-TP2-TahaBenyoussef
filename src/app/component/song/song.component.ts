@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { SpotifyService } from '../../services/Spotify.service';
+import { TranslateService } from '@ngx-translate/core';
 
 const YOUTUBE_LINK = "https://www.youtube.com/embed/";
 
@@ -17,7 +18,7 @@ export class SongComponent implements OnInit {
   videoUrl?: SafeResourceUrl;
   songName: string = "";
 
-  constructor(public route: ActivatedRoute, public spotify: SpotifyService, public sanitizer: DomSanitizer) { }
+  constructor(public route: ActivatedRoute, public spotify: SpotifyService, public sanitizer: DomSanitizer,public translate:TranslateService) { }
 
   ngOnInit() {
     this.albumName = this.route.snapshot.paramMap.get('albumName');

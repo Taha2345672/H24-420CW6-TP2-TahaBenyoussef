@@ -3,7 +3,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { SpotifyService } from '../../services/Spotify.service';
 import { YouTubePlayer } from '@angular/youtube-player';
-import { YouTubeService } from '../../services/YouTube.service';
+
 
 const YOUTUBE_LINK = "https://www.youtube.com/embed/";
 @Component({
@@ -18,7 +18,7 @@ export class SongComponent implements OnInit {
   videoUrl ?: SafeResourceUrl;
   songName: string =  "";
 
-  constructor(public route: ActivatedRoute, public spotify:SpotifyService, public youTube: YouTubeService, public sanitizer: DomSanitizer) {
+  constructor(public route: ActivatedRoute, public spotify:SpotifyService, public sanitizer: DomSanitizer) {
     }
 
     ngOnInit() {

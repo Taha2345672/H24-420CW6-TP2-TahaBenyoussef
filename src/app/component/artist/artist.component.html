@@ -1,27 +1,30 @@
-<div class="row">
-    <div class="search">
-      <h3>Ajouter un artiste</h3>
-      <form (ngSubmit)="searchAndAddArtistByName()">
-        <input type="text" name="artistName"placeholder="Entrez le nom de l'artiste"
-          [(ngModel)]="artistName"required/>
-        <button type="submit" >Rechercher</button>
-      </form>
-    </div>
-  
-    <div class="display">
-      <h3>Vos artistes favoris</h3>
+    
+    <main>
       <div class="row">
-        <!-- Liste d'artistes ajoutés aux favoris -->
-        <div *ngFor="let artist of spotify.favoriteArtists" class="artist-item">
-          <h4>{{ artist.name }}</h4>
-          <img [src]="artist.imageUrl" [alt]="artist.name" />
-          <button (click)="goToAlbums(artist.id)">Albums</button>
-          <button (click)="goToConcerts(artist.name)">Concerts</button>
-        </div>
+          <div class="search">
+              <h3>Ajouter un artiste</h3>
+              <form>
+                  <input type="text" name="artistName" placeholder="Nana Mouskouri" [(ngModel)]="artistName"> 
+                  <button (click)="addArtist()" >Rechercher</button>
+                  <button (click)="clearFavoris()">Vider la liste</button>
+              </form>
+          </div>
+          <div class="display">
+              <h3>Vos artistes</h3>
+              <div class="row">
+
+                  <!-- Liste d'artistes ajoutés aux favoris -->
+                  <div *ngFor="let artist of spotify.listArtiste">
+                      <h4>{{artist.name}}</h4>
+                      <img src="{{artist?.imageUrl}}" alt="{{artist?.name}}">
+                      <button [routerLink]="['/album', artist.id]">Albums</button>
+                      <button [routerLink]="['/show', artist.name]">Concerts</button>
+                  </div>                 
+
+              </div>
+             
+          </div>
       </div>
-      <div class="clear-favorites-button">
-        <button (click)="clearFavoriteArtists()">Effacer les favoris</button>
-      </div>
-    </div>
-  </div>
+  </main>
   
+

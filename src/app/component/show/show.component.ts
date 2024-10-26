@@ -1,6 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { BandsInTownService } from '../../services/BandsInTown.service';
 import { ActivatedRoute } from '@angular/router';
+import { GoogleMap } from '@angular/google-maps';
+import { SpotifyService } from '../../services/Spotify.service';
+
+declare var google: any; 
 
 @Component({
   selector: 'app-show',
@@ -8,34 +12,43 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./show.component.css']
 })
 export class ShowComponent implements OnInit {
+  artistName: string | null = null;
+  inputLat : number = 0;
+  inputLng : number = 0;
 
-  artistName: string = '';
-  concerts: any[] = [];
-  center: google.maps.LatLngLiteral = {lat: 0, lng: 0};
-  markers: { position: google.maps.LatLngLiteral, label: string }[] = [];
-  zoom: number = 5;
-  
+  center : google.maps.LatLngLiteral = {lat: 42, lng: -4};
+  zoom : number = 5;
 
-  constructor(public route: ActivatedRoute, public bandsInTownService: BandsInTownService) { }
+  markerPositions :google.maps.LatLngLiteral[]= [{lat: 42, lng: -4}]
 
-  async ngOnInit() {
+  constructor(public http: HttpClient, public spotify: SpotifyService, public route : ActivatedRoute ) { }  
 
-    this.artistName = this.route.snapshot.paramMap.get('artistName') || '';
-    this.concerts = await this.bandsInTownService.getConcerts(this.artistName);
+  async ngOnInit() {   
 
-    this.concerts.forEach(concert => {
-      const lat = Number(concert.venue.latitude);
-      const lng = Number(concert.venue.longitude);
-      this.markers.push({
-        position: { lat: lat, lng: lng },
-        label: concert.venue.name
-      });
-    });
-    console.log(this.markers)
-    if (this.concerts.length > 0) {
-      this.center = this.markers[0].position;
-    }
+    this.artistName = await this.route.snapshot.paramMap.get("name")
 
+    if (this.artistName) {
+      this.spotify.getConcert(this.artistName).then(() => {this.initializeMap();
+      });         
+    }  
   }
-
+  initializeMap() {
+    const mapOptions = {
+      center: { lat: 42, lng: -4 },
+      zoom: 5
+    };
+    const mapElement = document.getElementById('map');
+    if (mapElement) {
+      const map = new google.maps.Map(mapElement, mapOptions);
+      
+      this.spotify.concerts.forEach((show: any) => {
+        const marker = new google.maps.Marker({
+          position: { lat: show.venue.latitude, lng: show.venue.longitude },
+          map: map,
+          title: show.venue.name
+        });
+      });
+    }
+  }
 }
+

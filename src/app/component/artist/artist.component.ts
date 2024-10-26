@@ -1,6 +1,8 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { lastValueFrom } from 'rxjs';
 import { SpotifyService } from '../../services/Spotify.service';
-import { Router } from '@angular/router';
+import { Artist } from '../../models/artist';
 
 @Component({
   selector: 'app-artist',
@@ -9,40 +11,29 @@ import { Router } from '@angular/router';
 })
 export class ArtistComponent implements OnInit {
 
-  constructor(public  spotify:SpotifyService,public router : Router) { }
-  artistName : string = "";
+  spotifyToken?: string;
+  artistName: string= "";
+  artist ?:Artist;
+  imageUrl: string = ""; 
+  
 
-  async ngOnInit() {
-    await this.spotify.conect();
+  constructor(public http: HttpClient, public spotify: SpotifyService ) { }    
+
+    ngOnInit() {
+
+      this.spotify.connect(); 
 
   }
-    async searchAndAddArtist() {
-      this.spotify.saveArtist(this.artistName);
-    }
-  
-  
-    async searchAndAddArtistByName() {
-      let artist = await this.spotify.getArtistByName(this.artistName);
-      if (artist) {
-        let artistExists = this.spotify.favoriteArtists.some(favoriteArtist => artist && favoriteArtist.id === artist.id);
-        if (!artistExists) {
-          this.spotify.favoriteArtists.push(artist);
-          localStorage.setItem("artists", JSON.stringify(this.spotify.favoriteArtists));
-        }
-      }
-    }
-  
-    async clearFavoriteArtists(): Promise<void> {
-      await this.spotify.clearFavoris();
-    }
-  
-    goToAlbums(artistId: string) {
-      this.router.navigate(['/album', artistId]);
-    }
-  
-    goToConcerts(artistName: string) {
-      this.router.navigate(['/concert', artistName]);
-    }
-  
+
+  async addArtist(){
+  this.spotify.listArtiste = await this.spotify.searchArtist(this.artistName)
+  console.log(this.spotify.listArtiste)
   }
-  
+
+  clearFavoris(){
+    this.spotify.listArtiste = [];
+    localStorage.setItem("Artist", JSON.stringify(this.spotify.listArtiste));
+  } 
+
+}
+

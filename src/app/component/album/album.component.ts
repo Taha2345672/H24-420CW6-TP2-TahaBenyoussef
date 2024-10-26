@@ -1,7 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Album } from '../../models/album';
+import { Artist } from '../../models/artist';
 import { ActivatedRoute } from '@angular/router';
-
-import { Router } from '@angular/router';
+import { Song } from '../../models/song';
 import { SpotifyService } from '../../services/Spotify.service';
 
 @Component({
@@ -11,45 +13,23 @@ import { SpotifyService } from '../../services/Spotify.service';
 })
 export class AlbumComponent implements OnInit {
 
-  artistId: string | null;
-  albums: any[] = [];
-  artistName: string = '';
+  artistName: string= "";
+  
+  constructor(public http: HttpClient, public spotify: SpotifyService, public route : ActivatedRoute ) { }  
 
+  async ngOnInit() {
+    
+    const artistId  = this.route.snapshot.paramMap.get("id")
+   
+    
+    if (artistId) {
+      this.spotify.addAlbum(artistId);
+      
+    }   
 
-  constructor(public route: ActivatedRoute, public router: Router, public spotify: SpotifyService) {
-    this.artistId = null;
   }
-
-    async ngOnInit() {
-      let artistName = this.route.snapshot.paramMap.get('artistName');
-      if (artistName) {
-        let artist = await this.spotify.getArtistByName(artistName);
-        if (artist) {
-          this.artistId = artist.id;
-          this.artistName = artist.name;
-          this.albums = this.spotify.getAlbumsFromLocalStorage(this.artistId);
-          if (!this.albums || this.albums.length === 0) {
-            this.albums = await this.spotify.getAlbums(this.artistId);
-          }
-        }
-      } else {
-        let artistId = this.route.snapshot.paramMap.get('id');
-        if (artistId) {
-          let artist = await this.spotify.getArtist(artistId);
-          if (artist) {
-            this.artistName = artist.name;
-            this.artistId = artist.id;
-            this.albums = this.spotify.getAlbumsFromLocalStorage(this.artistId);
-            if (!this.albums || this.albums.length === 0) {
-              this.albums = await this.spotify.getAlbums(this.artistId);
-            }
-          }
-        }
-      }
-    }
-
-    ToSongs(albumId: string) {
-      this.router.navigate(['/album', albumId, 'chansons']);
-    }
-
 }
+
+
+ 
+

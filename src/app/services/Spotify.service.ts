@@ -1,9 +1,9 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
-import { Album } from '../models/Album';
-import { Song } from '../models/Song';
-import { Artist } from '../models/Artist';
+import { Album } from '../models/album';
+import { Song } from '../models/song';
+import { Artist } from '../models/artist';
 
 
 const CLIENT_ID = "d5b0eafe720f49f1b7d026fafc1f9c5e";
@@ -144,7 +144,8 @@ async getConcert(artistName: string){
   this.listArtiste = [];
   this.concerts = [];
 
-  let Concert = await lastValueFrom(this.http.get<any>("https://rest.bandsintown.com/artists/" + artistName + "/events?app_id=" + BANDTOWN_LIN));
+  let Concert = await lastValueFrom(this.http.get<any>(`https://rest.bandsintown.com/artists/${artistName}/events?app_id=YOUR_APP_ID`));
+
   console.log(Concert);
   this.concerts = Concert; 
   

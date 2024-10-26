@@ -1,0 +1,29 @@
+{
+    "ARTIST": {
+        "addArtist": "Add an artist",
+        "EXAMPLE": "Example: Nana Mouskouri",
+        "SEARCH": "Search",
+        "vosArtists": "Your artists",
+        "ALBUMS": "Albums",
+        "CONCERTS": "Concerts",
+        "clearFavorites": "Clear favorites"
+    },
+    "ALBUM": {
+        "artistAlbums": "Artist's albums",
+        "SONGS": "Songs"
+    },
+    "CHANSON": {
+        "albumSongs": "Songs from the album",
+        "PLAY": "Play"
+    },
+    "CONCERT": {
+        "artistConcerts": "Artist's concerts",
+        "phraseConcerts": "This artist has no upcoming concerts."
+    },
+    "APP": {
+        "FRENCH": "French",
+        "ENGLISH": "English",
+        "COPYRIGHT": "All rights reserved to Spotify, BandsInTown and Google",
+        "TEMPLATE": "I yoinked the teacher's template"
+    }
+}

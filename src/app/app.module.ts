@@ -10,6 +10,8 @@ import { HttpClient, provideHttpClient } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 @NgModule({
   declarations: [					
@@ -26,10 +28,21 @@ import { GoogleMapsModule } from '@angular/google-maps';
     AppRoutingModule,
     YouTubePlayerModule,
     FormsModule,
-    GoogleMapsModule
+    GoogleMapsModule,
+    TranslateModule.forRoot({
+      loader: { 
+        provide: TranslateLoader,
+      useFactory: HttpLoaderFactory,
+      deps: [HttpClient]
+      }
+    })
     
   ],
   providers: [provideHttpClient()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function HttpLoaderFactory(http : HttpClient){
+  return new TranslateHttpLoader(http);
+}

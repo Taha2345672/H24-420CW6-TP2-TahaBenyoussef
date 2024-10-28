@@ -7,7 +7,7 @@ import { Artist } from '../models/artist';
 
 const CLIENT_ID = "d5b0eafe720f49f1b7d026fafc1f9c5e";
 const CLIENT_SECRET = "61fa174064ff4e439c9fbc6759a3f105";
-const GOOGLE_API_KEY = "AIzaSyA60J7T5sDqgcpviaBchjvyCfQxjolDL9A";
+const GOOGLE_API_KEY = "AIzaSyDijB467uAikGMVRNOkQIB_FpSwCefJMg0";
 const YOUTUBE_LINK = "https://youtube.com/embed/";
 
 @Injectable({

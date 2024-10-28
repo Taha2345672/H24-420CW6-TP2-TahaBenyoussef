@@ -1,11 +1,11 @@
 {
     "song": {
       "SONGS_TITLE": "Chansons de l'album",
-      "PLAY_BUTTON": "Jouer",
+      "PLAY": "Jouer",
       "SONG_NAME": "Nom de la chanson"
     },
     "show": {
-      "CONCERTS_TITLE": "Concerts de l'artiste",
+      "CONCERTS": "Concerts de l'artiste",
       "LOCATION": "Emplacement",
       "DATE": "Date",
       "COUNTRY": "Pays",
@@ -25,7 +25,7 @@
     },
     "album": {
       "ALBUMS_TITLE": "Albums",
-      "SONGS_TITLE": "Chansons de l'album"
+      "SONGS": "Chansons de l'album"
     }
   }
   

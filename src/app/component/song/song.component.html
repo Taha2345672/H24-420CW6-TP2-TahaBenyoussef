@@ -11,7 +11,7 @@
           <!-- Liste de chansons d'un album choisi -->
           <div *ngFor="let song of spotify.listSong">
             <p>{{ song.name }}</p>
-            <button (click)="searchVideo(song.name)">{{ 'PLAY_BUTTON' | translate }}</button>
+            <button (click)="searchVideo(song.name)">{{ 'PLAY' | translate }}</button>
           </div>
         </div>
       </div>

@@ -9,18 +9,15 @@ const routes: Routes = [
 
   {path :"",redirectTo:"artist",pathMatch:"full"},
   {path:"artist",component:ArtistComponent},
-  {path:"album",component:AlbumComponent},
-  {path:"show",component:ShowComponent},
-  {path:"song",component:SongComponent},
+
   {path : "album/:id", component : AlbumComponent},
-  { path: 'album/:albumId/chansons', component: SongComponent },
-  {path : "album/artist/:artistName", component : AlbumComponent},
-  {path : "album/:id/chansons", component : SongComponent},
+
+
   {path : "show/:artistName", component : ShowComponent},
   { path: 'song/:albumName', component: SongComponent },
 
 
-   {path : "", redirectTo:"artist", pathMatch:"prefix"}
+
   
 
 

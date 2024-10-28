@@ -17,6 +17,10 @@ const routes: Routes = [
   {path : "album/artist/:artistName", component : AlbumComponent},
   {path : "album/:id/chansons", component : SongComponent},
   {path : "show/:artistName", component : ShowComponent},
+<<<<<<< HEAD
+=======
+  { path: 'song/:id', component: SongComponent },
+>>>>>>> 3d481de9b3fbc694c79aeb7ad56d9542fe467e0a
   { path: 'song/:albumName', component: SongComponent },
 
 

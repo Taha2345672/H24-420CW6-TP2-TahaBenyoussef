@@ -34,7 +34,7 @@ export class SpotifyService {
       })
     };
 
-    let response = await lastValueFrom(this.http.post<any>('https://accounts.spotify.com/api/token', body.toString(), httpOptions));
+    let response = await lastValueFrom(this.http.post<any>("https://accounts.spotify.com/api/token", body.toString(), httpOptions));
     this.spotifyToken = response.access_token;
     localStorage.setItem("Key", JSON.stringify(this.spotifyToken));
   }
@@ -125,8 +125,10 @@ export class SpotifyService {
     this.listArtiste = [];
     this.concerts = [];
 
-    let concert = await lastValueFrom(this.http.get<any>(`https://rest.bandsintown.com/artists/${artistName}/events?app_id=YOUR_APP_ID`));
+    let concert = await lastValueFrom(this.http.get<any>(`https://rest.bandsintown.com/artists/${artistName}/events?app_id=2b32475766802ac01eefda45e9e42ea0`));
+     console.log( this.concerts)
     this.concerts = concert; 
     return concert; 
+    
   }
 }

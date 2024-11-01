@@ -12,49 +12,34 @@ declare var google: any;
   styleUrls: ['./show.component.css']
 })
 export class ShowComponent implements OnInit {
-  artistName: string | null = null;
-  center: google.maps.LatLngLiteral = { lat: 42, lng: -4 };
+  
+  artistName: string = '';
+  concerts: any[] = [];
+  center: google.maps.LatLngLiteral = {lat: 0, lng: 0};
+  markers: { position: google.maps.LatLngLiteral, label: string }[] = [];
   zoom: number = 5;
-  markerPositions: google.maps.LatLngLiteral[] = [];
+  
 
-  constructor(
-    public http: HttpClient,
-    public spotify: SpotifyService,
-    public route: ActivatedRoute,
-    public translate: TranslateService
-  ) {}
+  constructor(public route: ActivatedRoute, public spotify:SpotifyService) { }
 
   async ngOnInit() {
-    this.artistName = this.route.snapshot.paramMap.get("artistName");
-    console.log(this.artistName);
 
-    if (this.artistName) {
-      await this.spotify.getConcert(this.artistName);
-      console.log(this.spotify.concerts);
-      this.initializeMap();
+    this.artistName = this.route.snapshot.paramMap.get('artistName') || '';
+    this.concerts = await this.spotify.getConcert(this.artistName);
+
+    this.concerts.forEach(concert => {
+      const lat = Number(concert.venue.latitude);
+      const lng = Number(concert.venue.longitude);
+      this.markers.push({
+        position: { lat: lat, lng: lng },
+        label: concert.venue.name
+      });
+    });
+    console.log(this.markers)
+    if (this.concerts.length > 0) {
+      this.center = this.markers[0].position;
     }
+
   }
 
-  initializeMap() {
-    const mapOptions = {
-      center: this.center,
-      zoom: this.zoom
-    };
-    const mapElement = document.getElementById('map');
-
-    if (mapElement) {
-      const map = new google.maps.Map(mapElement, mapOptions);
-
-      if (this.spotify.concerts && this.spotify.concerts.length > 0) {
-        for (const show of this.spotify.concerts) {
-          console.log(show.venue.name, show.venue.latitude, show.venue.longitude);
-          const marker = new google.maps.Marker({
-            position: { lat: show.venue.latitude, lng: show.venue.longitude },
-            map: map,
-            title: show.venue.name
-          });
-        }
-      }
-    }
-  }
 }

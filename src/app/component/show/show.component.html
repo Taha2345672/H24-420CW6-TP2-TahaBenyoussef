@@ -1,15 +1,15 @@
-<main>   
+<main>
     <h3>{{ 'CONCERTS' | translate }} {{ artistName }}</h3>
-    <div class="row">   
+    <div class="row">
         <div id="map" style="height: 400px; width: 100%;"></div>
 
         <div class="shows">
-            <!-- Liste des concerts -->
-            <div *ngFor="let show of spotify.concerts">
+         
+            <div *ngFor="let show of concerts"> 
                 <h4>{{ show.datetime }}</h4>
                 <p>{{ 'COUNTRY' | translate }}: {{ show.venue.country }}</p>
                 <p>{{ 'CITY' | translate }}: {{ show.venue.city }}</p>
-            </div>               
-        </div>           
+            </div>
+        </div>
     </div>
 </main>

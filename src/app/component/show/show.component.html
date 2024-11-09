@@ -1,15 +1,16 @@
 <main>
     <h3>{{ 'CONCERTS' | translate }} {{ artistName }}</h3>
     <div class="row">
-        <div id="map" style="height: 400px; width: 100%;"></div>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDijB467uAikGMVRNOkQIB_FpSwCefJMg0"></script>
-        <div class="shows">
-         
-            <div *ngFor="let show of concerts"> 
-                <h4>{{ show.datetime }}</h4>
-                <p>{{ 'COUNTRY' | translate }}: {{ show.venue.country }}</p>
-                <p>{{ 'CITY' | translate }}: {{ show.venue.city }}</p>
-            </div>
+        <google-map [center]="center" [zoom]="zoom" height="400px" width="100%"></google-map>
+            <map-marker *ngFor="let marker of markers" [position]="marker.position" [label]="marker.label"></map-marker>
+          
+      <div class="shows">
+        <div *ngFor="let show of concerts">
+          <h4>{{ show.datetime }}</h4>
+          <p>{{ 'COUNTRY' | translate }}: {{ show.venue.country }}</p>
+          <p>{{ 'CITY' | translate }}: {{ show.venue.city }}</p>
         </div>
+      </div>
     </div>
-</main>
+  </main>
+  

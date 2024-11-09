@@ -1,10 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SpotifyService } from '../../services/Spotify.service';
-import { TranslateService } from '@ngx-translate/core';
-
-declare var google: any;
 
 @Component({
   selector: 'app-show',
@@ -12,34 +8,39 @@ declare var google: any;
   styleUrls: ['./show.component.css']
 })
 export class ShowComponent implements OnInit {
-  
   artistName: string = '';
   concerts: any[] = [];
-  center: google.maps.LatLngLiteral = {lat: 0, lng: 0};
-  markers: { position: google.maps.LatLngLiteral, label: string }[] = [];
+  center: google.maps.LatLngLiteral = { lat: 0, lng: 0 };
   zoom: number = 5;
-  
+  markers: { position: google.maps.LatLngLiteral; label: string }[] = [];
 
-  constructor(public route: ActivatedRoute, public spotify:SpotifyService) { }
+  constructor(public route: ActivatedRoute, public spotify: SpotifyService) {}
 
   async ngOnInit() {
-
     this.artistName = this.route.snapshot.paramMap.get('artistName') || '';
+    console.log( this.artistName);
     this.concerts = await this.spotify.getConcert(this.artistName);
+    console.log( this.concerts);
+  
 
-    this.concerts.forEach(concert => {
-      const lat = Number(concert.venue.latitude);
-      const lng = Number(concert.venue.longitude);
-      this.markers.push({
-        position: { lat: lat, lng: lng },
-        label: concert.venue.name
-      });
-    });
-    console.log(this.markers)
+  
     if (this.concerts.length > 0) {
-      this.center = this.markers[0].position;
+      const firstConcert = this.concerts[0];
+      this.center = {
+        lat: Number(firstConcert.venue.latitude),
+        lng: Number(firstConcert.venue.longitude),
+      };
+      console.log(this.center);
+
+      
+      this.markers = this.concerts.map(concert => ({
+        position: {
+          lat: Number(concert.venue.latitude),
+          lng: Number(concert.venue.longitude),
+        },
+        label: concert.venue.name,
+      }));
+      console.log(this.markers);
     }
-
   }
-
 }
